@@ -7,7 +7,7 @@ import glob
 # Cấu hình đường dẫn
 # =================================================================
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-CODE_DIR = os.path.join(BASE_DIR, '..', 'Code')
+MAIN_DIR = os.path.join(BASE_DIR, '..', 'Main')
 INPUT_BASE_DIR = os.path.join(BASE_DIR, '..', 'Input')
 OUTPUT_BASE_DIR = os.path.join(BASE_DIR, '..', 'Output')
 DATA_DIR = os.path.join(BASE_DIR, '..', 'Data') # Giả định folder Data nằm cùng cấp
@@ -22,18 +22,18 @@ def write_outputs(problem_name):
     
     # 1. Xác định đường dẫn cụ thể
     script_file_name = f"{problem_name}.py"
-    code_path = os.path.join(CODE_DIR, script_file_name)
+    main_path = os.path.join(MAIN_DIR, script_file_name)
     input_dir = os.path.join(INPUT_BASE_DIR, problem_name)
     output_dir = os.path.join(OUTPUT_BASE_DIR, problem_name)
     
     print(f"\n🚀 Bắt đầu xử lý bài toán: {problem_name}")
     
     # 2. Kiểm tra các điều kiện cần thiết
-    if not os.path.exists(code_path):
+    if not os.path.exists(main_path):
         # Thử tìm kiếm linh hoạt (ví dụ: Tips3 -> tips3.py)
-        code_path_lower = os.path.join(CODE_DIR, f"{problem_name.lower()}.py")
-        if os.path.exists(code_path_lower):
-            code_path = code_path_lower
+        main_path_lower = os.path.join(MAIN_DIR, f"{problem_name.lower()}.py")
+        if os.path.exists(main_path_lower):
+            main_path = main_path_lower
         else:
             print(f"❌ Lỗi: Không tìm thấy file code: {script_file_name} hoặc {problem_name.lower()}.py")
             return
@@ -68,7 +68,7 @@ def write_outputs(problem_name):
         try:
             # Thực thi solution của user
             process = subprocess.run(
-                [sys.executable, code_path],
+                [sys.executable, main_path],
                 input=input_data,
                 capture_output=True,
                 text=True,

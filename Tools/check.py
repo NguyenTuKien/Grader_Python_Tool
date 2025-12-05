@@ -18,7 +18,7 @@ class Colors:
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 INPUT_DIR = os.path.join(BASE_DIR, '..', 'Input')
 OUTPUT_DIR = os.path.join(BASE_DIR, '..', 'Output')
-CODE_DIR = os.path.join(BASE_DIR, '..', 'Code')  # Thư mục chứa bài làm của user
+MAIN_DIR = os.path.join(BASE_DIR, '..', 'Main')  # Thư mục chứa bài làm của user
 
 # =================================================================
 # 2. Các hàm tiện ích
@@ -26,7 +26,7 @@ CODE_DIR = os.path.join(BASE_DIR, '..', 'Code')  # Thư mục chứa bài làm c
 
 def find_script_file(problem_name):
     """
-    Tìm file python tương ứng với tên bài trong thư mục Code/.
+    Tìm file python tương ứng với tên bài trong thư mục Main/.
     Ưu tiên tìm kiếm linh hoạt: [Tên_Bài].py, [tên_bài].py, [tênbài].py
     """
     # Tạo các tên file tiềm năng từ tên thư mục bài toán
@@ -37,8 +37,8 @@ def find_script_file(problem_name):
     ]
     
     for name in possible_names:
-        # Tìm trong thư mục CODE_DIR
-        file_path = os.path.join(CODE_DIR, name) 
+        # Tìm trong thư mục MAIN_DIR
+        file_path = os.path.join(MAIN_DIR, name) 
         if os.path.exists(file_path):
             return file_path
     return None
@@ -105,8 +105,8 @@ def main():
         print(f"❌ Không tìm thấy thư mục Input tại: {INPUT_DIR}")
         return
     
-    if not os.path.exists(CODE_DIR):
-        print(f"❌ Không tìm thấy thư mục Code tại: {CODE_DIR}")
+    if not os.path.exists(MAIN_DIR):
+        print(f"❌ Không tìm thấy thư mục Code tại: {MAIN_DIR}")
         print("   Vui lòng tạo thư mục 'Code' và đặt file bài làm vào đó.")
         return
 
@@ -125,7 +125,7 @@ def main():
 
         script_path = find_script_file(problem)
         if not script_path:
-            print(f"   ❌ Không tìm thấy file code trong folder Code/")
+            print(f"   ❌ Không tìm thấy file code trong folder Main/")
             print(f"      (Kỳ vọng: {problem}.py, {problem.lower()}.py...)")
             continue
 

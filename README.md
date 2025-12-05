@@ -11,7 +11,8 @@ Hệ thống yêu cầu cấu trúc thư mục như sau:
 - **Output/**: Chứa các file đầu ra mong muốn tương ứng với từng bài tập.
   - Ví dụ: `Output/Tips3/1.out`, `Output/Tips3/2.out`, ...
 - **Tools/**: Chứa các công cụ hỗ trợ, bao gồm file `check.py` để chấm điểm.
-
+- **Main/**: Nơi mọi người viết code cho các bài tập.
+  - Ví dụ: `Main/Tips3.py`, `Main/Flight_year.py`, ...
 ## 2. Cách chạy tools
 1. Đảm bảo bạn đã cài đặt Python 3 trên máy tính của mình.
 
@@ -21,8 +22,8 @@ Hệ thống yêu cầu cấu trúc thư mục như sau:
    cd <TÊN_THƯ_MỤC>
    ```
 
-3. Viết code của bạn vào folder Home với đề bài là tên bài tập tương ứng (không phân biệt hoa thường).
-    - Ví dụ: Để làm bài tập `Flight_year`, tạo file `Home/Flight_year.py` và viết code vào đó. 
+3. Viết code của bạn vào folder Main với đề bài là tên bài tập tương ứng (không phân biệt hoa thường).
+    - Ví dụ: Để làm bài tập `Flight_year`, tạo file `Main/Flight_year.py` và viết code vào đó. 
 
 4. Chạy lệnh sau để chấm điểm cho một bài tập cụ thể:
    ```bash
